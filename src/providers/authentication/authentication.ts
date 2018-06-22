@@ -1,3 +1,4 @@
+
 import { Observable } from 'rxjs/Observable';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
@@ -11,27 +12,24 @@ import { Injectable } from '@angular/core';
 */
 @Injectable()
 export class AuthenticationProvider {
-
-    
+  jobs : Job;
   constructor(public http: HttpClient) {
     console.log('Hello AuthenticationProvider Provider');
 
   }
 
-  autenticar(jobs: Observable<any>) {
-    this.http.post<any>('http://localhost:8080/login',JSON.stringify({"password":"admin","email":"admin"}))
-    .subscribe(resp => {
-      console.log(resp.headers.get('Authorization'));
-    });
+  getJobs() {
+ 
+    return this.http.get<Array<Job>>("http://localhost:8080/job");
+    
   }
-
 }
 
-export class Job{
-  id : number;
-  title: String;
-  salario: 62205;
-  categoria: String;
-  proprietarioNome: String;
-  localizacao: String;
+export interface Job{
+  id: number,
+  titulo: string,
+  salario: number,
+  categoria: string,
+  proprietarioNome: string,
+  localizacao: string
 }

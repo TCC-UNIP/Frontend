@@ -1,19 +1,34 @@
 import { Observable } from 'rxjs/Observable';
-import { HttpClient } from '@angular/common/http';
-import { AuthenticationProvider } from './../../providers/authentication/authentication';
-import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { AuthenticationProvider, Job } from './../../providers/authentication/authentication';
+import { Component, ViewChild } from '@angular/core';
+import { NavController, List } from 'ionic-angular';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
 })
 export class HomePage {
-  jobs: Observable<any>;
-  token: String;
+  arrayJobs: Array<Job>;
 
   constructor(public navCtrl: NavController, public auth: AuthenticationProvider) {
-    this.auth.autenticar(this.jobs);
-    
+    this.showJobs();
+   
   }
+
+  showJobs(){
+     this.auth.getJobs().subscribe(
+      (data: Array<Job>) => {
+        this.arrayJobs = data;
+    },
+      (err : HttpErrorResponse) => {
+        console.log(err.type);
+      }
+  
+  );
+  
+  }
+
+
 }

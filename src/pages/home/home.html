@@ -7,8 +7,9 @@
 </ion-header>
 
 <ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+  <ion-list>
+    <button full ion-item  *ngFor="let jobs of arrayJobs" (click)="showJobs()">
+      <h2>{{ jobs.titulo }}</h2><br>Salario: {{ jobs.salario }} <br> Ofertante: {{ jobs.proprietarioNome }} <button id="candidatar" ion-button>Candidatar-se</button>
+    </button> 
+  </ion-list>
 </ion-content>
