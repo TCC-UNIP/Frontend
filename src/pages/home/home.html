@@ -7,9 +7,11 @@
 </ion-header>
 
 <ion-content padding>
+
   <ion-list>
     <button full ion-item  *ngFor="let jobs of arrayJobs" (click)="showJobs()">
       <h2>{{ jobs.titulo }}</h2><br>Salario: {{ jobs.salario }} <br> Ofertante: {{ jobs.proprietarioNome }} <button id="candidatar" ion-button>Candidatar-se</button>
     </button> 
   </ion-list>
+
 </ion-content>

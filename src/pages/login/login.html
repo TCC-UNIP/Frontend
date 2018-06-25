@@ -14,5 +14,21 @@
 
 
 <ion-content padding>
-{{token}}
+    {{erroMensage}}
+  <ion-list>
+
+    <ion-item>
+      <ion-label floating >Email</ion-label>
+      <ion-input type="text" [(ngModel)]="email"></ion-input>
+    </ion-item>
+  
+    <ion-item>
+      <ion-label floating>Password</ion-label>
+      <ion-input type="password" [(ngModel)]="password"></ion-input>
+    </ion-item>
+  
+  </ion-list>
+  <button ion-button full (click)="logar();">Log In</button><br>
+  <a style="padding-left:47%; color:green;">Cadastrar</a>
+  {{erroMensage}}
 </ion-content>

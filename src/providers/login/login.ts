@@ -1,6 +1,6 @@
 import { Observable } from 'rxjs/Observable';
 
-import { HttpClient, HttpErrorResponse, HttpResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpResponse, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 /*
@@ -9,6 +9,15 @@ import { Injectable } from '@angular/core';
   See https://angular.io/guide/dependency-injection for more info on providers
   and Angular DI.
 */
+
+/*const httpOptions = {
+  headers: new HttpHeaders({
+    'Content-Type':  'application/json',
+    'responseType': 'text'
+  })
+};*/
+
+
 @Injectable()
 export class LoginProvider {
   url: string = "http://localhost:8080";
@@ -17,8 +26,10 @@ export class LoginProvider {
     console.log('Hello LoginProvider Provider');
   }
 
-  logar() {
-    return this.http.post(this.url+"/login", JSON.stringify({"email":"teste","password":"teste"}));
+ 
+
+  logar(email:string, password:string) {
+    return this.http.post(this.url+"/login", {email,password}, {'responseType': 'text'});
   }
 
 

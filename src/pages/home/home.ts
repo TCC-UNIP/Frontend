@@ -1,9 +1,7 @@
-import { Observable } from 'rxjs/Observable';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import {  HttpErrorResponse } from '@angular/common/http';
 import { AuthenticationProvider, Job } from './../../providers/authentication/authentication';
-import { Component, ViewChild } from '@angular/core';
-import { NavController, List } from 'ionic-angular';
-import { Title } from '@angular/platform-browser';
+import { Component } from '@angular/core';
+import { NavController } from 'ionic-angular';
 
 @Component({
   selector: 'page-home',
