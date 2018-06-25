@@ -12,7 +12,7 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class LoginProvider {
   url: string = "http://localhost:8080";
-  token: Token;
+
   constructor(public http: HttpClient) {
     console.log('Hello LoginProvider Provider');
   }
