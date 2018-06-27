@@ -1,27 +1,21 @@
-
-import { Observable } from 'rxjs/Observable';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
-
 /*
-  Generated class for the AuthenticationProvider provider.
+  Generated class for the JobListProvider provider.
 
   See https://angular.io/guide/dependency-injection for more info on providers
   and Angular DI.
 */
 @Injectable()
-export class AuthenticationProvider {
+export class JobListProvider {
   jobs : Job;
   constructor(public http: HttpClient) {
     console.log('Hello AuthenticationProvider Provider');
-
   }
 
   getJobs() {
- 
-    return this.http.get<Array<Job>>("http://localhost:8080/job");
-    
+    return this.http.get<Array<Job>>("http://localhost:8080/job");  
   }
 }
 

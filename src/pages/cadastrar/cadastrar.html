@@ -1,5 +1,5 @@
 <!--
-  Generated template for the LoginPage page.
+  Generated template for the CadastrarPage page.
 
   See http://ionicframework.com/docs/components/#navigation for more info on
   Ionic pages and navigation.
@@ -7,28 +7,34 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>login</ion-title>
+    <ion-title>cadastrar</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
+ 
+
 <ion-content padding>
-   <div class="erroMensage"> {{erroMensage}} </div>
   <ion-list>
 
     <ion-item>
       <ion-label floating >Email</ion-label>
       <ion-input type="email" [(ngModel)]="email"></ion-input>
     </ion-item>
+
+    <ion-item>
+      <ion-label floating>Nome Completo</ion-label>
+      <ion-input type="text" [(ngModel)]="nome"></ion-input>
+    </ion-item>
   
     <ion-item>
       <ion-label floating>Password</ion-label>
       <ion-input type="password" [(ngModel)]="password"></ion-input>
     </ion-item>
-  
   </ion-list>
-  <button ion-button full (click)="logar();">Log In</button><br>
-  <a style="padding-left:41%; color:green;" (click)="cadastrar();">Cadastrar</a>
-  
+  <button ion-button full (click)="cadastrar();">Cadastrar</button><br>
+  {{nome}}
+  {{email}}
+  {{password}}
 </ion-content>

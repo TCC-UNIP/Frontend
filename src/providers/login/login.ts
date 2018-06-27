@@ -29,7 +29,8 @@ export class LoginProvider {
  
 
   logar(email:string, password:string) {
-    return this.http.post(this.url+"/login", {email,password}, {'responseType': 'text'});
+    return this.http.post(this.url+"/login", {email,password}, {'responseType': 'text'})
+     
   }
 
 

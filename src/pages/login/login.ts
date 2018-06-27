@@ -1,3 +1,4 @@
+import { CadastrarPage } from './../cadastrar/cadastrar';
 import { HomePage } from './../home/home';
 import { LoginProvider } from './../../providers/login/login';
 import { Component } from '@angular/core';
@@ -32,16 +33,26 @@ export class LoginPage {
   }
 
   logar(){
+    if(this.email && this.password != null){
     this.loginServicos.logar(this.email,this.password).subscribe(
       (data: string) =>{
         this.token = data;
         this.isLog(this.token);
       });
+  }else if (this.email == null) {
+    this.erroMensage="Utilize seu Email";
+  }else if(this.password == null) {
+    this.erroMensage="Utilize sua senha ";
+  }
   }
 
   isLog(token:string){
     if(token != null){
       this.navCtrl.push(HomePage);
     }
+  }
+
+  cadastrar() {
+    this.navCtrl.push(CadastrarPage);
   }
 }

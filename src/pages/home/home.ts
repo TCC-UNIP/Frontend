@@ -1,5 +1,5 @@
+import { JobListProvider, Job } from './../../providers/job-list/job-list';
 import {  HttpErrorResponse } from '@angular/common/http';
-import { AuthenticationProvider, Job } from './../../providers/authentication/authentication';
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 
@@ -10,13 +10,12 @@ import { NavController } from 'ionic-angular';
 export class HomePage {
   arrayJobs: Array<Job>;
 
-  constructor(public navCtrl: NavController, public auth: AuthenticationProvider) {
+  constructor(public navCtrl: NavController, public joblist: JobListProvider) {
     this.showJobs();
-   
   }
 
   showJobs(){
-     this.auth.getJobs().subscribe(
+     this.joblist.getJobs().subscribe(
       (data: Array<Job>) => {
         this.arrayJobs = data;
     },
