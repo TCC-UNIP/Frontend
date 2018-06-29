@@ -1,3 +1,4 @@
+import { CandidatarPage } from './../pages/candidatar/candidatar';
 import { CadastrarPage } from './../pages/cadastrar/cadastrar';
 import { LoginPage } from './../pages/login/login';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
@@ -11,13 +12,15 @@ import { HomePage } from '../pages/home/home';
 import { LoginProvider } from '../providers/login/login';
 import { JobListProvider } from '../providers/job-list/job-list';
 import { CadastrarProvider } from '../providers/cadastrar/cadastrar';
+import { CandidatarProvider } from '../providers/candidatar/candidatar';
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
     LoginPage,
-    CadastrarPage
+    CadastrarPage,
+    CandidatarPage
   ],
   imports: [
     BrowserModule,
@@ -30,7 +33,8 @@ import { CadastrarProvider } from '../providers/cadastrar/cadastrar';
     MyApp,
     HomePage,
     LoginPage,
-    CadastrarPage
+    CadastrarPage,
+    CandidatarPage
   ],
   providers: [
     StatusBar,
@@ -38,7 +42,8 @@ import { CadastrarProvider } from '../providers/cadastrar/cadastrar';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     LoginProvider,
     JobListProvider,
-    CadastrarProvider
+    CadastrarProvider,
+    CandidatarProvider
   ]
 })
 export class AppModule {}

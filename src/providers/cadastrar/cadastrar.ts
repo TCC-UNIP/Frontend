@@ -21,6 +21,8 @@ export class CadastrarProvider {
 }
 
 export interface User{
-
-
+  datanascimento: Date,
+  nome: string,
+  password: string,
+  email: string
   }
