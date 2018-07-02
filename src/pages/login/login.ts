@@ -44,12 +44,14 @@ export class LoginPage {
 
   logar(){
     if(this.email && this.password != null){   
-    this.usuario.email = this.email;
-    this.usuario.password = this.password;
+
 
     this.loginServicos.logar(this.email,this.password).subscribe(
       (data: string) =>{
+        this.usuario.email = this.email;
+        this.usuario.password = this.password;
         this.usuario.token = data;
+        this.storage.clear;
         this.storage.set('usuario', this.usuario);
         this.navCtrl.push(HomePage);
       });
