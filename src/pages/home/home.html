@@ -1,18 +1,18 @@
 <ion-header>
- 
+  <ion-navbar>
     <ion-title>
       <br>
       Serviços Gerais
       <br><br>
     </ion-title>
- 
+  </ion-navbar>
 </ion-header>
 
 <ion-content padding>
 
   <ion-list>
-    <button full ion-item  *ngFor="let jobs of arrayJobs" (click)="gsdf()">
-      <h2>{{ jobs.titulo }}</h2><br>Salario: {{ jobs.salario }} <br> Ofertante: {{ jobs.proprietarioNome }} <button id="candidatar" ion-button>Candidatar-se</button>
+    <button full ion-item  *ngFor="let jobs of arrayJobs" (click)="candidatar(jobs)">
+      <b><h1>{{ jobs.titulo }}</h1></b><br>Salario: {{ jobs.salario }} <br> Ofertante: {{ jobs.proprietarioNome }} <button id="candidatar" ion-button>Candidatar-se</button>
     </button> 
   </ion-list>
 

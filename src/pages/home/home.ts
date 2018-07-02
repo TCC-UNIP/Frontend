@@ -1,3 +1,5 @@
+import { CandidatarProvider } from './../../providers/candidatar/candidatar';
+import { CadastrarProvider } from './../../providers/cadastrar/cadastrar';
 import { JobListProvider, Job } from './../../providers/job-list/job-list';
 import {  HttpErrorResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
@@ -10,7 +12,7 @@ import { NavController } from 'ionic-angular';
 export class HomePage {
   arrayJobs: Array<Job>;
 
-  constructor(public navCtrl: NavController, public joblist: JobListProvider) {
+  constructor(public navCtrl: NavController, public joblist: JobListProvider, private candidatarService: CandidatarProvider) {
     this.showJobs();
   }
 
@@ -23,9 +25,10 @@ export class HomePage {
         console.log(err.type);
       }
   
-  );
-  
-  }
+  );}
 
+  candidatar(jobitem: Job){
+    this.candidatarService.candidatar(jobitem);
+  }
 
 }

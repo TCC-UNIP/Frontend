@@ -1,5 +1,7 @@
-import { CadastrarPage } from './../cadastrar/cadastrar';
 import { HomePage } from './../home/home';
+import { UsuarioToken } from './login';
+import { Storage } from '@ionic/storage';
+import { CadastrarPage } from './../cadastrar/cadastrar';
 import { LoginProvider } from './../../providers/login/login';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
@@ -19,26 +21,39 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 
 export class LoginPage {
+
   private email: string;
   private password: string;
   private erroMensage:string;
-  public token:string;
-  constructor(public navCtrl: NavController, public navParams: NavParams, public loginServicos: LoginProvider) {
-    
+  
+
+  usuario : UsuarioToken = {
+        token : null,
+        email :this.email,
+        password : this.password  
+  }
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, public loginServicos: LoginProvider,  private storage: Storage) {
+  
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad LoginPage');   
-    this.isLog(this.token);
+    this.loginAutomatio();
   }
 
   logar(){
-    if(this.email && this.password != null){
+    if(this.email && this.password != null){   
+    this.usuario.email = this.email;
+    this.usuario.password = this.password;
+
     this.loginServicos.logar(this.email,this.password).subscribe(
       (data: string) =>{
-        this.token = data;
-        this.isLog(this.token);
+        this.usuario.token = data;
+        this.storage.set('usuario', this.usuario);
+        this.navCtrl.push(HomePage);
       });
+
   }else if (this.email == null) {
     this.erroMensage="Utilize seu Email";
   }else if(this.password == null) {
@@ -46,13 +61,32 @@ export class LoginPage {
   }
   }
 
-  isLog(token:string){
-    if(token != null){
-      this.navCtrl.push(HomePage);
-    }
-  }
+  loginAutomatio(){
+ 
+    this.storage.get('usuario')    
+    .then((data : UsuarioToken) => {
+      this.usuario = data;
+      this.loginServicos.logar(data.email, data.password).subscribe(
+        (data: string) =>{
+          this.usuario.token = data;
+          this.storage.set('usuario', this.usuario);
+          this.navCtrl.push(HomePage);
+        });
+    })
+    .catch(() => {
+
+    });
+}
+
+
 
   cadastrar() {
     this.navCtrl.push(CadastrarPage);
   }
+}
+
+export interface UsuarioToken {
+  token: string;
+  email: string;
+  password: string;
 }

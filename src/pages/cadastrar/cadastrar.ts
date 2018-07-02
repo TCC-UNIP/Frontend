@@ -2,7 +2,6 @@ import { LoginPage } from './../login/login';
 import { CadastrarProvider, User } from './../../providers/cadastrar/cadastrar';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { shouldCallLifecycleInitHook } from '@angular/core/src/view';
 
 /**
  * Generated class for the CadastrarPage page.
@@ -36,6 +35,7 @@ export class CadastrarPage {
   cadastrar(){
 
     this.usuario = {
+    userToken: null,
     datanascimento: this.datanascimento,
     nome: this.nome,
     password: this.password,

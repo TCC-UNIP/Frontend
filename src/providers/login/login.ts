@@ -1,7 +1,8 @@
-import { Observable } from 'rxjs/Observable';
-
-import { HttpClient, HttpErrorResponse, HttpResponse, HttpHeaders } from '@angular/common/http';
+import { User } from './../cadastrar/cadastrar';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Storage} from '@ionic/storage';
+
 
 /*
   Generated class for the LoginProvider provider.
@@ -22,7 +23,7 @@ import { Injectable } from '@angular/core';
 export class LoginProvider {
   url: string = "http://localhost:8080";
 
-  constructor(public http: HttpClient) {
+  constructor(public http: HttpClient, private storage: Storage) {
     console.log('Hello LoginProvider Provider');
   }
 
@@ -30,10 +31,14 @@ export class LoginProvider {
 
   logar(email:string, password:string) {
     return this.http.post(this.url+"/login", {email,password}, {'responseType': 'text'})
-     
   }
 
-
+  getUserToken(key: string){
+    this.storage.get(key)
+      .then((data: User) =>{
+        return data.userToken;
+      });
+  }
 }
 
 

@@ -1,3 +1,6 @@
+import { Job } from './../job-list/job-list';
+import { UsuarioToken } from './../../pages/login/login';
+import { Storage } from '@ionic/storage';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
@@ -9,9 +12,21 @@ import { Injectable } from '@angular/core';
 */
 @Injectable()
 export class CandidatarProvider {
+  url = "http://localhost:8080" ;
 
-  constructor(public http: HttpClient) {
+  constructor(public http: HttpClient, private storage: Storage) {
     console.log('Hello CandidatarProvider Provider');
   }
+
+  candidatar(job: Job){
+    this.storage.get('usuario').then((data:UsuarioToken)=>{
+      return this.http.post(this.url+"/protected/job/candidatar/"+data.email+'/'+job.id, {'Authorization': data.token }).subscribe();
+    }).catch(()=>
+  {
+
+  });
+  }
+
+
 
 }
