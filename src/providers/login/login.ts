@@ -1,4 +1,3 @@
-import { User } from './../cadastrar/cadastrar';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Storage} from '@ionic/storage';
@@ -33,12 +32,6 @@ export class LoginProvider {
     return this.http.post(this.url+"/login", {email,password}, {'responseType': 'text'})
   }
 
-  getUserToken(key: string){
-    this.storage.get(key)
-      .then((data: User) =>{
-        return data.userToken;
-      });
-  }
 }
 
 

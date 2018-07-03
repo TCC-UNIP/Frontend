@@ -1,5 +1,4 @@
 import { CandidatarProvider } from './../../providers/candidatar/candidatar';
-import { CadastrarProvider } from './../../providers/cadastrar/cadastrar';
 import { JobListProvider, Job } from './../../providers/job-list/job-list';
 import {  HttpErrorResponse } from '@angular/common/http';
 import { Component } from '@angular/core';

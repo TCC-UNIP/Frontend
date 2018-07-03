@@ -25,13 +25,8 @@ export class CandidatarProvider {
 
   candidatar(job: Job){
     this.storage.get('usuario').then((data:UsuarioToken)=>{
-
-      const headers = new Headers({
-        'Content-Type': 'application/json',
-        'Authorization': data.token
-      })
-
-      return this.http.post(this.url+"/protected/job/candidatar/"+data.email+'/'+job.id, { headers: headers }).subscribe();
+      return this.http.post(this.url+"/protected/job/candidatar/"+data.email+'/'+job.id,{},{
+        headers: new HttpHeaders().set('Authorization', data.token)}).subscribe();
     }).catch(()=>
   {
 
