@@ -9,7 +9,7 @@ import { Injectable } from '@angular/core';
 */
 @Injectable()
 export class CadastrarProvider {
-  url: string = "http://localhost:8080";
+  url: string = "http://192.168.2.129:8080";
   constructor(public http: HttpClient) {
     console.log('Hello CadastrarProvider Provider');
   }

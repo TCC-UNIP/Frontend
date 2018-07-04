@@ -44,8 +44,6 @@ export class LoginPage {
 
   logar(){
     if(this.email && this.password != null){   
-
-
     this.loginServicos.logar(this.email,this.password).subscribe(
       (data: string) =>{
         this.usuario.email = this.email;
@@ -54,7 +52,7 @@ export class LoginPage {
         this.storage.clear;
         this.storage.set('usuario', this.usuario);
         this.navCtrl.push(HomePage);
-      });
+      },error => this.erroMensage = "Login falhou" );
 
   }else if (this.email == null) {
     this.erroMensage="Utilize seu Email";
@@ -64,7 +62,6 @@ export class LoginPage {
   }
 
   loginAutomatio(){
- 
     this.storage.get('usuario')    
     .then((data : UsuarioToken) => {
       this.usuario = data;
@@ -76,13 +73,11 @@ export class LoginPage {
         });
     })
     .catch(() => {
-
+        this.erroMensage= 'Login Automatico falhou';
     });
 }
 
-
-
-  cadastrar() {
+cadastrar() {
     this.navCtrl.push(CadastrarPage);
   }
 }

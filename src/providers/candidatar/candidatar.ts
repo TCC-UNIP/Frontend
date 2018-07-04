@@ -16,23 +16,18 @@ import { Injectable } from '@angular/core';
 
 @Injectable()
 export class CandidatarProvider {
-  url = "http://localhost:8080" ;
+  url = "http://192.168.2.129:8080" ;
 
   constructor(public http: HttpClient, private storage: Storage) {
     console.log('Hello CandidatarProvider Provider');
   }
-
-
+  
   candidatar(job: Job){
     this.storage.get('usuario').then((data:UsuarioToken)=>{
       return this.http.post(this.url+"/protected/job/candidatar/"+data.email+'/'+job.id,{},{
         headers: new HttpHeaders().set('Authorization', data.token)}).subscribe();
     }).catch(()=>
   {
-
   });
   }
-
-
-
 }

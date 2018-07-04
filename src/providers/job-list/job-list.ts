@@ -15,7 +15,7 @@ export class JobListProvider {
   }
 
   getJobs() {
-    return this.http.get<Array<Job>>("http://localhost:8080/job");  
+    return this.http.get<Array<Job>>("http://192.168.2.129:8080/job");  
   }
 }
 
