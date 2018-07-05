@@ -1,5 +1,4 @@
 import { HomePage } from './../home/home';
-import { UsuarioToken } from './login';
 import { Storage } from '@ionic/storage';
 import { CadastrarPage } from './../cadastrar/cadastrar';
 import { LoginProvider } from './../../providers/login/login';
@@ -27,11 +26,9 @@ export class LoginPage {
   private erroMensage:string;
   
 
-  usuario : UsuarioToken = {
-        token : null,
-        email :this.email,
-        password : this.password  
-  }
+
+
+
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public loginServicos: LoginProvider,  private storage: Storage) {
   
@@ -43,14 +40,15 @@ export class LoginPage {
   }
 
   logar(){
+    let usuario = new UsuarioToken;
     if(this.email && this.password != null){   
-    this.loginServicos.logar(this.email,this.password).subscribe(
+    this.loginServicos.logar(this.email, this.password).subscribe(
       (data: string) =>{
-        this.usuario.email = this.email;
-        this.usuario.password = this.password;
-        this.usuario.token = data;
+        usuario.email = this.email;
+        usuario.password = this.password;
+        usuario.token = data;
         this.storage.clear;
-        this.storage.set('usuario', this.usuario);
+        this.storage.set('usuario', usuario);
         this.navCtrl.push(HomePage);
       },error => this.erroMensage = "Login falhou" );
 
@@ -62,13 +60,14 @@ export class LoginPage {
   }
 
   loginAutomatio(){
+    let usuario = new UsuarioToken;
     this.storage.get('usuario')    
     .then((data : UsuarioToken) => {
-      this.usuario = data;
+      usuario = data;
       this.loginServicos.logar(data.email, data.password).subscribe(
         (data: string) =>{
-          this.usuario.token = data;
-          this.storage.set('usuario', this.usuario);
+          usuario.token = data;
+          this.storage.set('usuario', usuario);
           this.navCtrl.push(HomePage);
         });
     })
@@ -82,7 +81,7 @@ cadastrar() {
   }
 }
 
-export interface UsuarioToken {
+export class UsuarioToken {
   token: string;
   email: string;
   password: string;

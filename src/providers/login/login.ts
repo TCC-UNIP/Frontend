@@ -20,7 +20,7 @@ import { Storage} from '@ionic/storage';
 
 @Injectable()
 export class LoginProvider {
-  url: string = "http://192.168.2.129:8080";
+  url: string ="http://localhost:8080";
 
   constructor(public http: HttpClient, private storage: Storage) {
     console.log('Hello LoginProvider Provider');
