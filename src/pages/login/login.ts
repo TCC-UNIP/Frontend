@@ -72,7 +72,7 @@ export class LoginPage {
         });
     })
     .catch(() => {
-        this.erroMensage= 'Login Automatico falhou';
+        
     });
 }
 

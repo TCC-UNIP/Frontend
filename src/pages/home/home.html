@@ -11,7 +11,7 @@
 <ion-content padding>
 
   <ion-list>
-    <button full ion-item  *ngFor="let jobs of arrayJobs" (click)="candidatar(jobs)">
+    <button full ion-item  *ngFor="let jobs of arrayJobs" (click)="showConfirm(jobs)">
       <b><h1>{{ jobs.titulo }}</h1></b><br>Salario: {{ jobs.salario }} <br> Ofertante: {{ jobs.proprietarioNome }} <button id="candidatar" ion-button>Candidatar-se</button>
     </button> 
   </ion-list>

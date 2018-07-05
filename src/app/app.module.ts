@@ -16,6 +16,7 @@ import { JobListProvider } from '../providers/job-list/job-list';
 import { CadastrarProvider } from '../providers/cadastrar/cadastrar';
 
 import { IonicStorageModule } from '@ionic/storage';
+import { UtilProvider } from '../providers/util/util';
 
 
 @NgModule({
@@ -45,7 +46,8 @@ import { IonicStorageModule } from '@ionic/storage';
     LoginProvider,
     JobListProvider,
     CadastrarProvider,
-    CandidatarProvider
+    CandidatarProvider,
+    UtilProvider
   ]
 })
 export class AppModule {}

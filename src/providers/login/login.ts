@@ -1,3 +1,4 @@
+import { UtilProvider } from './../util/util';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Storage} from '@ionic/storage';
@@ -20,16 +21,15 @@ import { Storage} from '@ionic/storage';
 
 @Injectable()
 export class LoginProvider {
-  url: string ="http://localhost:8080";
 
-  constructor(public http: HttpClient, private storage: Storage) {
+  constructor(public http: HttpClient, public utilidades: UtilProvider) {
     console.log('Hello LoginProvider Provider');
   }
 
  
 
   logar(email:string, password:string) {
-    return this.http.post(this.url+"/login", {email,password}, {'responseType': 'text'})
+    return this.http.post(this.utilidades.getApiUrl()+"/login", {email,password}, {'responseType': 'text'})
   }
 
 }

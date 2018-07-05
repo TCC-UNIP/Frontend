@@ -2,7 +2,7 @@ import { CandidatarProvider } from './../../providers/candidatar/candidatar';
 import { JobListProvider, Job } from './../../providers/job-list/job-list';
 import {  HttpErrorResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, AlertController } from 'ionic-angular';
 
 @Component({
   selector: 'page-home',
@@ -11,7 +11,7 @@ import { NavController } from 'ionic-angular';
 export class HomePage {
   arrayJobs: Array<Job>;
 
-  constructor(public navCtrl: NavController, public joblist: JobListProvider, private candidatarService: CandidatarProvider) {
+  constructor(public alertCtrl: AlertController, public navCtrl: NavController, public joblist: JobListProvider, private candidatarService: CandidatarProvider) {
     this.showJobs();
   }
 
@@ -27,7 +27,31 @@ export class HomePage {
   );}
 
   candidatar(jobitem: Job){
+    
     this.candidatarService.candidatar(jobitem);
   }
+
+  showConfirm(jobitem: Job) {
+    const confirm = this.alertCtrl.create({
+      title: 'Candidatar',
+      message: 'Você realmente deseja se candidatar',
+      buttons: [
+        {
+          text: 'Não',
+          handler: () => {
+            console.log('Disagree clicked');
+          }
+        },
+        {
+          text: 'Sim',
+          handler: () => {
+            this.candidatar(jobitem);
+          }
+        }
+      ]
+    });
+    confirm.present();
+  }
+
 
 }

@@ -1,3 +1,4 @@
+import { UtilProvider } from './../util/util';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
@@ -9,18 +10,18 @@ import { Injectable } from '@angular/core';
 */
 @Injectable()
 export class CadastrarProvider {
-  url: string = "http://localhost:8080";
-  constructor(public http: HttpClient) {
+
+  constructor(public http: HttpClient, public utilidades: UtilProvider) {
     console.log('Hello CadastrarProvider Provider');
   }
 
  
     Cadastrar(user: User) {
-      return this.http.put(this.url+"/user", user);  
+      return this.http.put(this.utilidades.getApiUrl()+"/user", user);  
     }
 }
 
-export interface User{
+export class User{
   userToken: string;
   datanascimento: Date;
   nome: string;

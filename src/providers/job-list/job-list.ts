@@ -1,3 +1,4 @@
+import { UtilProvider } from './../util/util';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
@@ -10,12 +11,12 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class JobListProvider {
   jobs : Job;
-  constructor(public http: HttpClient) {
+  constructor(public http: HttpClient, public utilidade: UtilProvider) {
     console.log('Hello AuthenticationProvider Provider');
   }
 
   getJobs() {
-    return this.http.get<Array<Job>>("http://192.168.2.129:8080/job");  
+    return this.http.get<Array<Job>>(this.utilidade.getApiUrl()+"/job");  
   }
 }
 

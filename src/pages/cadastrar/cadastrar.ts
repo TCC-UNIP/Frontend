@@ -17,7 +17,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class CadastrarPage {
 
-  usuario: User;
+  
 
   private nome:string;
   private email:string;
@@ -34,14 +34,14 @@ export class CadastrarPage {
  
   cadastrar(){
 
-    this.usuario = {
-    userToken: null,
-    datanascimento: this.datanascimento,
-    nome: this.nome,
-    password: this.password,
-    email: this.email
-    }
-      this.cadastrarServico.Cadastrar(this.usuario).subscribe();
+    let usuario = new User;
+    usuario.userToken =null,
+    usuario.datanascimento= this.datanascimento,
+    usuario.nome= this.nome,
+    usuario.password= this.password,
+    usuario.email= this.email
+    
+      this.cadastrarServico.Cadastrar(usuario).subscribe();
       this.navCtrl.push(LoginPage);
   }
 
