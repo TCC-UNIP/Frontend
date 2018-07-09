@@ -1,3 +1,6 @@
+import { Storage } from '@ionic/storage';
+import { CriarServicoProvider } from './../../providers/criar-servico/criar-servico';
+import { Job } from './../../providers/job-list/job-list';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
@@ -15,11 +18,23 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class CriarServicosPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  titulo: string;
+  descricao: string;
+  salario: number;
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, public criarServicoProvider: CriarServicoProvider, private storage: Storage) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad CriarServicosPage');
+  }
+
+  criarServico(){
+    let job = new Job; 
+    job.descricao = this.descricao;
+    job.titulo = this.titulo;
+    job.salario = this.salario;
+    this.criarServicoProvider.criarServico(job);
   }
 
 }

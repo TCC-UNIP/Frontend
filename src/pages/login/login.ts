@@ -26,12 +26,12 @@ export class LoginPage {
   private erroMensage:string;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public loginServicos: LoginProvider,  private storage: Storage) {
-  
+    this.loginAutomatio();
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad LoginPage');   
-    this.loginAutomatio();
+    
   }
 
   logar(){

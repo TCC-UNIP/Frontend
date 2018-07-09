@@ -1,3 +1,4 @@
+import { CriarServicosPageModule } from './../pages/criar-servicos/criar-servicos.module';
 import { CriarServicosPage } from './../pages/criar-servicos/criar-servicos';
 import { TabsPage } from './../pages/tabs/tabs';
 import { HomePage } from './../pages/home/home';
@@ -16,18 +17,16 @@ import { MyApp } from './app.component';
 import { LoginProvider } from '../providers/login/login';
 import { JobListProvider } from '../providers/job-list/job-list';
 import { CadastrarProvider } from '../providers/cadastrar/cadastrar';
-
 import { IonicStorageModule } from '@ionic/storage';
 import { UtilProvider } from '../providers/util/util';
+import { CriarServicoProvider } from '../providers/criar-servico/criar-servico';
 
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
-    TabsPage,
-    CriarServicosPage
-
+    TabsPage
   ],
   imports: [
     BrowserModule,
@@ -35,16 +34,18 @@ import { UtilProvider } from '../providers/util/util';
     HttpClientModule,
     IonicStorageModule.forRoot(),
     LoginPageModule,
-    CadastrarPageModule
+    CadastrarPageModule,
+    CriarServicosPageModule
+
   ],
   bootstrap: [IonicApp], 
   entryComponents: [
     MyApp,
     HomePage,
+    CriarServicosPage,
     LoginPage,
     CadastrarPage,
-    TabsPage,
-    CriarServicosPage
+    TabsPage
   ],
   providers: [
     StatusBar,
@@ -54,7 +55,8 @@ import { UtilProvider } from '../providers/util/util';
     JobListProvider,
     CadastrarProvider,
     CandidatarProvider,
-    UtilProvider
+    UtilProvider,
+    CriarServicoProvider
   ]
 })
 export class AppModule {}

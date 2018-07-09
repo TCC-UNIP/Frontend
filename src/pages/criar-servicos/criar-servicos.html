@@ -7,7 +7,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>criarServicos</ion-title>
+    <ion-title>Criar Servicos</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -15,4 +15,24 @@
 
 <ion-content padding>
 
+    <ion-list>
+
+        <ion-item>
+          <ion-label floating >Titulo</ion-label>
+          <ion-input type="text" [(ngModel)]="titulo"></ion-input>
+        </ion-item>
+      
+        <ion-item>
+          <ion-label floating>Valor Oferecido</ion-label>
+          <ion-input type="number" [(ngModel)]="salario"></ion-input>
+        </ion-item>
+      
+        <ion-item>
+            <ion-label floating>Descrição do serviço</ion-label>
+            <ion-input type="text" [(ngModel)]="descricao"></ion-input>
+          </ion-item>
+
+      </ion-list>
+      <button ion-button full (click)="criarServico()">Criar Serviço</button><br>
+      {{descricao}}
 </ion-content>

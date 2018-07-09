@@ -32,7 +32,6 @@ export class HomePage {
   );}
 
   candidatar(jobitem: Job){
-    
     this.candidatarService.candidatar(jobitem);
   }
 

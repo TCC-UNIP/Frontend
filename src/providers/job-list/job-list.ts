@@ -20,12 +20,12 @@ export class JobListProvider {
   }
 }
 
-export interface Job{
-  id: number,
-  titulo: string,
-  salario: number,
-  categoria: string,
-  proprietarioNome: string,
-  localizacao: string,
+export class Job{
+  id: number;
+  titulo: string;
+  salario: number;
+  categoria: string;
+  proprietarioNome: string;
+  localizacao: string;
   descricao: string
 }
