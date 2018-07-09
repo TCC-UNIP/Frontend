@@ -1,3 +1,5 @@
+import { CriarServicosPage } from './../pages/criar-servicos/criar-servicos';
+import { TabsPage } from './../pages/tabs/tabs';
 import { HomePage } from './../pages/home/home';
 import { CadastrarPageModule } from './../pages/cadastrar/cadastrar.module';
 import { LoginPageModule } from './../pages/login/login.module';
@@ -22,7 +24,10 @@ import { UtilProvider } from '../providers/util/util';
 @NgModule({
   declarations: [
     MyApp,
-    HomePage
+    HomePage,
+    TabsPage,
+    CriarServicosPage
+
   ],
   imports: [
     BrowserModule,
@@ -37,7 +42,9 @@ import { UtilProvider } from '../providers/util/util';
     MyApp,
     HomePage,
     LoginPage,
-    CadastrarPage
+    CadastrarPage,
+    TabsPage,
+    CriarServicosPage
   ],
   providers: [
     StatusBar,

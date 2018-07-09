@@ -26,5 +26,6 @@ export interface Job{
   salario: number,
   categoria: string,
   proprietarioNome: string,
-  localizacao: string
+  localizacao: string,
+  descricao: string
 }

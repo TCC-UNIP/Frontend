@@ -10,12 +10,17 @@ import { NavController, AlertController } from 'ionic-angular';
 })
 export class HomePage {
   arrayJobs: Array<Job>;
+  
 
   constructor(public alertCtrl: AlertController, public navCtrl: NavController, public joblist: JobListProvider, private candidatarService: CandidatarProvider) {
-    this.showJobs();
+    
   }
 
-  showJobs(){
+  ionViewDidLoad() {
+    this.getJobs();
+  }
+
+  getJobs(){
      this.joblist.getJobs().subscribe(
       (data: Array<Job>) => {
         this.arrayJobs = data;
@@ -33,8 +38,8 @@ export class HomePage {
 
   showConfirm(jobitem: Job) {
     const confirm = this.alertCtrl.create({
-      title: 'Candidatar',
-      message: 'Você realmente deseja se candidatar',
+      title: 'Candidatar-se a:',
+      message: jobitem.descricao,
       buttons: [
         {
           text: 'Não',

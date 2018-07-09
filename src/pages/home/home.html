@@ -1,19 +1,18 @@
 <ion-header>
-  <ion-navbar>
+
     <ion-title>
       <br>
       Serviços Gerais
       <br><br>
     </ion-title>
-  </ion-navbar>
+
 </ion-header>
 
 <ion-content padding>
 
   <ion-list>
     <button full ion-item  *ngFor="let jobs of arrayJobs" (click)="showConfirm(jobs)">
-      <b><h1>{{ jobs.titulo }}</h1></b><br>Salario: {{ jobs.salario }} <br> Ofertante: {{ jobs.proprietarioNome }} <button id="candidatar" ion-button>Candidatar-se</button>
+      <b><h1>{{ jobs.titulo }}</h1></b><br>Salario: {{ jobs.salario }} <br> Ofertante: {{ jobs.proprietarioNome }} <br> Descrição: {{jobs.descricao}} <button id="candidatar" ion-button>Candidatar-se</button>
     </button> 
-  </ion-list>
-
+  </ion-list>  
 </ion-content>

@@ -24,11 +24,6 @@ export class LoginPage {
   private email: string;
   private password: string;
   private erroMensage:string;
-  
-
-
-
-
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public loginServicos: LoginProvider,  private storage: Storage) {
   
@@ -47,7 +42,7 @@ export class LoginPage {
         usuario.email = this.email;
         usuario.password = this.password;
         usuario.token = data;
-        this.storage.clear;
+        this.storage.clear();
         this.storage.set('usuario', usuario);
         this.navCtrl.push(HomePage);
       },error => this.erroMensage = "Login falhou" );
@@ -74,6 +69,11 @@ export class LoginPage {
     .catch(() => {
         
     });
+}
+
+logout(){
+  this.storage.clear();
+  this.navCtrl.push(LoginPage);
 }
 
 cadastrar() {
